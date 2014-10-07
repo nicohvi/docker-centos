@@ -9,5 +9,9 @@ RUN yum -y update && \
     yum install tar which git vim-minimal sudo && \
     yum clean all
 
+# install development tools
+RUN yum -y groupinstall "Development Tools" && \
+    yum clean all
+
 # Disable requiretty for sudo access
 RUN  sed -i "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers
